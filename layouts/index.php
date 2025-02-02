@@ -1,35 +1,18 @@
 <?php include('header.php'); ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descubra seu Signo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .carousel-item img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            margin: auto;
-            display: block;
-        }
-    </style>
-</head>
 <body class="d-flex flex-column min-vh-100">
     
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
       <div class="container-fluid">
-        <img src="../assets/imgs/logo.png" class="img-fluid rounded-circle" alt="Logo" style="height: 50px;">
+        <img src="../assets/imgs/logo.png" class="img-fluid rounded-circle" alt="Logo">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.php">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.php">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.php">Contato</a></li>
+                <li class="nav-item"><a class="nav-link" href="../layouts/index.php">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="../layouts/about.php">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="../layouts/contact.php">Contato</a></li>
             </ul>
             <div class="form-check form-switch ms-3">
                 <input class="form-check-input" type="checkbox" id="darkModeToggle">
@@ -40,7 +23,7 @@
     </nav>
 </header>
 
-<main class="container mt-5">
+<main class="container main-content">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <h1 class="text-center mb-4">Descubra seu Signo</h1>
@@ -57,7 +40,8 @@
             </form>
         </div>
     </div>
-    <section class="container mt-5">
+
+    <section class="carousel-container">
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <?php
@@ -78,43 +62,12 @@
         </div>
     </section>
 </main>
-<footer class="bg-dark text-white text-center p-3 mt-auto">
-    <p class="mb-0">&copy; 2025 Descubra seu Signo. Todos os direitos reservados.</p>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<footer class="footer">
+    <p>&copy; 2025 Descubra seu Signo. Todos os direitos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/script.js"></script>
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toggleSwitch = document.getElementById("darkModeToggle");
-        const darkModeLabel = document.getElementById("darkModeLabel");
-        const body = document.body;
-        const navbar = document.getElementById("navbar");
-        if (localStorage.getItem("dark-mode") === "enabled") {
-            ativarModoEscuro();
-            toggleSwitch.checked = true;
-        }
-        toggleSwitch.addEventListener("change", function () {
-            if (this.checked) {
-                ativarModoEscuro();
-                localStorage.setItem("dark-mode", "enabled");
-            } else {
-                ativarModoClaro();
-                localStorage.setItem("dark-mode", "disabled");
-            }
-        });
-        function ativarModoEscuro() {
-            body.classList.add("bg-dark", "text-light");
-            navbar.classList.remove("bg-light");
-            navbar.classList.add("bg-dark", "navbar-dark");
-            darkModeLabel.textContent = "Modo Claro";
-        }
-        function ativarModoClaro() {
-            body.classList.remove("bg-dark", "text-light");
-            navbar.classList.remove("bg-dark", "navbar-dark");
-            navbar.classList.add("bg-light");
-            darkModeLabel.textContent = "Modo Escuro";
-        }
-    });
-</script>
 </html>

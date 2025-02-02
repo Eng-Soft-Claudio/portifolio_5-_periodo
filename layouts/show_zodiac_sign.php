@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+
 function determinarSigno($data_nascimento) {
     $xml = simplexml_load_file('sign.xml') or die("Erro: Não foi possível carregar o arquivo XML.");
     $data_nascimento_formatada = date('m-d', strtotime($data_nascimento));
@@ -20,18 +21,21 @@ function determinarSigno($data_nascimento) {
     }
     return null;
 }
+
 $nome = $_POST['nome'];
 $data_nascimento = $_POST['data_nascimento'];
 $signo = determinarSigno($data_nascimento);
 if (!$signo) {
     die("Signo não encontrado para a data de nascimento fornecida.");
 }
+
 $signoAlterado = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', iconv('UTF-8', 'ASCII//TRANSLIT', trim($signo->signoNome))));
 $caminhoImagem = "../assets/imgs/{$signoAlterado}.png";
 if (!file_exists($caminhoImagem)) {
     die("A imagem do signo não foi encontrada: {$caminhoImagem}");
 }
 ?>
+
 <div class="container mt-5">
     <h1 class="text-center">Olá, <?php echo $nome; ?>!</h1>
     <p class="text-center">Seu signo é: <strong><?php echo trim($signo->signoNome); ?></strong></p>
@@ -47,5 +51,6 @@ if (!file_exists($caminhoImagem)) {
         <a href="index.php" class="btn btn-primary">Voltar à Página Inicial</a>
     </div>
 </div>
+
 </body>
 </html>
