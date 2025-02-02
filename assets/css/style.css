@@ -1,0 +1,13 @@
+.navbar-custom img {
+    height: 50px; 
+    width: auto; 
+  }
+.navbar-custom {
+    height: 10%; 
+  }
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
